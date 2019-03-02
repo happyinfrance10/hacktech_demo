@@ -3,12 +3,17 @@ var model = {
     //Denotes whether the game is in loading screen, gameplay, etc.
     gameState: 0,
     //In game parameters
-    hoursLeft: 0,
+    hoursLeft: 2160,
     energy: 0,
     coding: 0,
     resume: 0,
     personality: 0,
     wit: 0
+}
+
+var pass_resume_screening = function(coding, resume, personality, wit, difficulty){
+  let score = coding*.2 + resume * .5 + personality *.15 + wit * .15;
+   return (score > 900);
 }
 
 //Change gamestate when screen is clicked
