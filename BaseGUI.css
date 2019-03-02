@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:700");
+body {
+	background-color: black
+}
 #loadscreen {
 	margin: 0;
 	padding: 0;
@@ -9,6 +12,9 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+#gui {
+	display: none
 }
 p {
   font-size: 24px;
