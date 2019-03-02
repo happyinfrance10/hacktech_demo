@@ -51,6 +51,7 @@ function startGame() {
     if (model.gameState === 0) {
         $("#loadscreen").css("display", "none");
         $("#gui").css("display", "flex");
+        $("#playerStats").css("display", "flex");
         model.gameState = 1;
     }
 }
