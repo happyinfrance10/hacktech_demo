@@ -4,7 +4,7 @@ var model = {
     gameState: 0,
     //In game parameters
     hoursLeft: 2160,
-    energy: 0,
+    energy: 1000,
     coding: 0,
     resume: 0,
     personality: 0,
@@ -40,13 +40,12 @@ function normal_distribution(mean, sd, value){
 
 }
 
-function pass_resume_screening = function(coding, resume, personality, wit, difficulty){
+function pass_resume_screening(coding, resume, personality, wit, difficulty){
   let score = coding*.2 + resume * .5 + personality *.15 + wit * .15;
    return (score > 900);
 }
 
 //Change gamestate when screen is clicked
-$(document).click(startGame);
 function startGame() {
     if (model.gameState === 0) {
         $("#loadscreen").css("display", "none");
@@ -55,13 +54,60 @@ function startGame() {
         model.gameState = 1;
     }
 }
+$(document).click(startGame);
 
 //Example code - define function to update model, then bind model to button
 //click event
 function button1() {
+    model.hoursLeft -= 3;
+    model.coding +=10;
+    model.energy -=125;
+    let coding = model.coding.toString();
+    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
     //Update game logic here
 }
-$("#button1").click(button1)
+$("#button1").click(button1);
+
+
+function button2() {
+    model.hoursLeft -= 3;
+    model.coding +=10;
+    model.energy -=125;
+    let coding = model.coding.toString();
+    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    //Update game logic here
+}
+$("#button2").click(button2);
+
+function button3() {
+    model.hoursLeft -= 3;
+    model.coding +=10;
+    model.energy -=125;
+    let coding = model.coding.toString();
+    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    //Update game logic here
+}
+$("#button3").click(button3);
+
+function button4() {
+    model.hoursLeft -= 3;
+    model.coding +=10;
+    model.energy -=125;
+    let coding = model.coding.toString();
+    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    //Update game logic here
+}
+$("#button4").click(button4);
+
+function button5() {
+    model.hoursLeft -= 3;
+    model.coding +=10;
+    model.energy -=125;
+    let coding = model.coding.toString();
+    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    //Update game logic here
+}
+$("#button5").click(button5);
 
 function draw() {
     //Draw in game GUI here

@@ -16,6 +16,10 @@ body {
 #gui, #playerStats {
 	display: none
 }
+
+#playerStats{
+	display: none;
+}
 p {
   font-size: 24px;
 }
@@ -35,7 +39,7 @@ dl {
 	position: relative;
 	padding: 20px;
   }
-  
+
   dt {
 	align-self: flex-start;
 	width: 100%;
@@ -47,7 +51,7 @@ dl {
 	margin-bottom: 20px;
 	margin-left: 130px;
   }
-  
+
   .text {
 	font-weight: 600;
 	display: flex;
@@ -59,7 +63,7 @@ dl {
 	left: 0;
 	justify-content: flex-end;
   }
-  
+
   .value {
 	font-size: .8em;
 	line-height: 1;
@@ -74,7 +78,7 @@ dl {
 	#fff 1px,
 	#fff 5%
   );
-	
+
 	&:after {
 	  content: "";
 	  display: block;
@@ -91,11 +95,11 @@ dl {
 	&:hover,
 	&:focus {
 	  &:after {
-		 background-color: #aaa; 
+		 background-color: #aaa;
 	  }
 	}
   }
-  
+
   @for $i from 1 through 1000 {
 	.value-#{$i} {
 	  &:after {
@@ -104,4 +108,3 @@ dl {
 	  }
 	}
   }
-  
