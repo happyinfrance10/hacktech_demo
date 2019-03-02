@@ -11,12 +11,22 @@ var model = {
     wit: 0
 }
 
+//Change gamestate when screen is clicked
+$(document).click(startGame);
+function startGame() {
+    if (model.gameState === 0) {
+        $("#loadscreen").css("display", "none");
+        $("#gui").css("display", "flex");
+        model.gameState = 1;
+    }
+}
+
 //Example code - define function to update model, then bind model to button
 //click event
 function button1() {
     //Update game logic here
 }
-$("#buttonone").click(button1)
+$("#button1").click(button1)
 
 function draw() {
     //Draw in game GUI here
