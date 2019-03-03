@@ -118,14 +118,20 @@ $("#button5").click(button5);
 $(".button").click(draw);
 
 function draw() {
-    console.log("meme");
     $("#coding").text(formatScore(model.coding));
+    jss.set(".line1:after", {'max-width': getPercentage(model.coding) + "%"})
     $("#resume").text(formatScore(model.resume));
+    jss.set(".line2:after", {'max-width': getPercentage(model.resume) + "%"})
     $("#personality").text(formatScore(model.personality));
+    jss.set(".line3:after", {'max-width': getPercentage(model.personality) + "%"})
     $("#connections").text(formatScore(model.connections));
-    $("#happiness").text(formatScore(model.happiness));
+    jss.set(".line4:after", {'max-width': getPercentage(model.connections) + "%"})
     $("#energy").text(formatScore(model.energy));
+    jss.set(".line5:after", {'max-width': getPercentage(model.energy) + "%"})
+    $("#happiness").text(formatScore(model.happiness));
+    jss.set(".line6:after", {'max-width': getPercentage(model.happiness) + "%"})
     $("#time").text(model.hoursLeft + "/2160 hours remain.");
+    jss.set(".line7:after", {'max-width': (model.hoursLeft / 2160).toFixed(2) * 100 + "%"})
 }
 
 function formatScore(num) {
@@ -133,6 +139,10 @@ function formatScore(num) {
         num = 1000;
     }
     return (num + "/1000 (" + (num / 1000).toFixed(2) * 100 + "%)");
+}
+
+function getPercentage(num) {
+    return (num / 1000).toFixed(2) * 100
 }
 
 function checkVariables(){
@@ -172,9 +182,9 @@ function checkVariables(){
     //
     console.log("MVP");
     if(pass_resume_screening(model.coding, model.resume, model.personality, model.connections)){
-      document.getElementById("status").innerHTML = "Time up! You have worked very hard to become successful, and your efforts paid off with a job offer! Refresh to play again.";
+      document.getElementById("status").innerHTML = "Time's up! You have worked very hard to become successful, and your efforts paid off with a job offer! Refresh to play again.";
     } else {
-      document.getElementById("status").innerHTML = "Time up! Unfortunately, things have not been kind to you in this life; recruitment was not very successful for you. Refresh to play again.";
+      document.getElementById("status").innerHTML = "Time's up! Unfortunately, things have not been kind to you in this life; recruitment was not very successful for you. Refresh to play again.";
     }
   }
 }
