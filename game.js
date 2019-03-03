@@ -12,34 +12,8 @@ var model = {
     connections: 0
 }
 
-function normal_distribution(mean, sd, value){
-  let z = (value-mean)/sd;
-  if (z < -6.5) {
-    return 0.0;
-  }
-
-  if (z > 6.5) {
-    return 1.0;
-  }
-
-  let factK = 1;
-  let sum = 0;
-  let term = 1;
-  let k = 0;
-  let loopStop = Math.exp(-23);
-
-  while(Math.abs(term) > loopStop) {
-    term = .3989422804 * Math.pow(-1,k) * Math.pow(z,k) / (2 * k + 1) / Math.pow(2,k) * Math.pow(z,k+1) / factK;
-    sum += term;
-    k++;
-    factK *= k;
-  }
-  sum += 0.5;
-  return sum;
-}
-
-function pass_resume_screening(coding, resume, personality, wit, difficulty){
-  let score = coding*.2 + resume * .5 + personality *.15 + wit * .15;
+function pass_resume_screening(coding, resume, personality, connections){
+  let score = coding*.2 + resume * .4 + personality *.1 + connections * .3;
    return (score > 900);
 }
 
@@ -58,16 +32,23 @@ $(document).click(startGame);
 //Example code - define function to update model, then bind model to button
 //click event
 function button1() {    //leetcode
+  if(model.energy-125>=0 && model.happiness-25>=0){
     model.hoursLeft -= 3;
     model.coding +=10;
     model.energy -=125;
     model.happiness -=25;
     checkVariables();
     //Update game logic here
+  } else if (model.happiness-25<0){
+    document.getElementById("status").innerHTML = "Spending too much time on career preparation can be a bad thing...";
+  } else {
+    document.getElementById("status").innerHTML = "Do you really want to end up too exhausted to be productive soon?";
+  }
 }
 $("#button1").click(button1);
 
 function button2() {
+  if(model.energy-50>=0 && model.happiness-20>=0){
     model.hoursLeft -= 3;
     model.connections +=20;
     model.personality +=10;
@@ -75,6 +56,11 @@ function button2() {
     model.happiness -=20;
     checkVariables();
     //Update game logic here
+  } else if (model.happiness-20<0){
+    document.getElementById("status").innerHTML = "Spending too much time on career preparation can be a bad thing...";
+  } else {
+    document.getElementById("status").innerHTML = "Do you really want to end up too exhausted to be productive soon?";
+  }
 }
 $("#button2").click(button2);
 
@@ -87,6 +73,7 @@ function button3() {  //nap
 $("#button3").click(button3);
 
 function button4() {    //project
+  if(model.energy-200>=0 && model.happiness-50>=0){
     model.hoursLeft -= 6;
     model.coding +=5;
     model.resume +=15;
@@ -94,6 +81,11 @@ function button4() {    //project
     model.energy -=200;
     checkVariables();
     //Update game logic here
+  } else if (model.happiness-50<0){
+    document.getElementById("status").innerHTML = "Spending too much time on career preparation can be a bad thing...";
+  } else {
+    document.getElementById("status").innerHTML = "Do you really want to end up too exhausted to be productive soon?";
+  }
 }
 $("#button4").click(button4);
 
@@ -148,11 +140,25 @@ function checkVariables(){
   }
   if (model.energy <= 0) {
     //burnt out --> cannot do anything but rest
+    document.getElementById("status").innerHTML = "You've overworked yourself! Get some sleep or you'll burn out!";
     model.energy = 0;
+  }
+  if (model.happiness<=0){
+    document.getElementById("status").innerHTML = "Being a slave to your career will ultimately make you feel stressed. It's important to take some time to have a work-life balance.";
+    model.happiness = 0;
+
+  }
+  if(model.energy>0 && model.happiness>0){
+    document.getElementById("status").innerHTML = "";
   }
   if (model.hoursLeft === 0) {
     //game over stuff: if past a certain level, say congrats.
     //
+    if(pass_resume_screening(model.coding, model.resume, model.personality, model.connections)){
+      document.getElementById("status").innerHTML = "Time up! You have worked very hard to become successful, and your efforts paid off with a job offer! Refresh to play again.";
+    } else {
+      document.getElementById("status").innerHTML = "Time up! Unfortunately, things have not been kind to you in this life; recruitment was not very successful for you. Refresh to play again.";
+    }
   }
 }
 
