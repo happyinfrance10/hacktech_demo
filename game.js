@@ -5,6 +5,7 @@ var model = {
     //In game parameters
     hoursLeft: 2160,
     energy: 1000,
+    happiness: 500,
     coding: 0,
     resume: 0,
     personality: 0,
@@ -33,11 +34,8 @@ function normal_distribution(mean, sd, value){
     k++;
     factK *= k;
   }
-
   sum += 0.5;
-
   return sum;
-
 }
 
 function pass_resume_screening(coding, resume, personality, wit, difficulty){
@@ -59,53 +57,45 @@ $(document).click(startGame);
 
 //Example code - define function to update model, then bind model to button
 //click event
-function button1() {
+function button1() {    //leetcode
     model.hoursLeft -= 3;
     model.coding +=10;
     model.energy -=125;
-    let coding = model.coding.toString();
-    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    model.happiness -=25;
     //Update game logic here
 }
 $("#button1").click(button1);
 
-
-function button2() {
+function button2() {    //stalk companies
     model.hoursLeft -= 3;
-    model.coding +=10;
-    model.energy -=125;
-    let coding = model.coding.toString();
-    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    model.wit +=25;
+    model.energy -=50;
+    model.happiness -=20;
     //Update game logic here
 }
 $("#button2").click(button2);
 
-function button3() {
+function button3() {  //nap
     model.hoursLeft -= 3;
-    model.coding +=10;
-    model.energy -=125;
-    let coding = model.coding.toString();
-    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    model.energy +=500;
     //Update game logic here
 }
 $("#button3").click(button3);
 
-function button4() {
-    model.hoursLeft -= 3;
-    model.coding +=10;
-    model.energy -=125;
-    let coding = model.coding.toString();
-    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+function button4() {    //project
+    model.hoursLeft -= 6;
+    model.coding +=5;
+    model.resume +=15;
+    model.happiness -=50;
+    model.energy -=200;
     //Update game logic here
 }
 $("#button4").click(button4);
 
-function button5() {
+function button5() {    //friend
     model.hoursLeft -= 3;
-    model.coding +=10;
-    model.energy -=125;
-    let coding = model.coding.toString();
-    document.querySelector(".coding").childNodes[0].innerHTML = "Coding: "+coding;
+    model.happiness +=500;
+    model.energy +=75;
     //Update game logic here
 }
 $("#button5").click(button5);
