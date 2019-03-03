@@ -43,7 +43,6 @@ function pass_resume_screening(coding, resume, personality, wit, difficulty){
    return (score > 900);
 }
 
-//Change gamestate when screen is clicked
 function startGame() {
     if (model.gameState === 0) {
         $("#loadscreen").css("display", "none");
@@ -100,8 +99,16 @@ function button5() {    //friend
 }
 $("#button5").click(button5);
 
+$(":button").click(draw);
+
 function draw() {
-    //Draw in game GUI here
+    $("#coding").text(model.coding + "/1000 (" + (model.coding / 1000).toFixed(2) * 100 + "%)");
+    $("#resume").text(model.resume + "/1000 (" + (model.resume / 1000).toFixed(2) * 100 + "%)");
+    $("#personality").text(model.personality + "/1000 (" + (model.personality / 1000).toFixed(2) * 100 + "%)");
+    $("#connections").text(model.connections + "/1000 (" + (model.connections / 1000).toFixed(2) * 100 + "%)");
+    $("#happiness").text(model.happiness + "/1000 (" + (model.happiness / 1000).toFixed(2) * 100 + "%)");
+    $("#energy").text(model.energy + "/1000 (" + (model.energy / 1000).toFixed(2) * 100 + "%)");
+    $("#time").text(model.hoursLeft + "/2160 hours remain.");
 }
 
 //Update game graphics every second?
