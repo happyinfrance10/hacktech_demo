@@ -68,7 +68,7 @@ $("#button1").click(button1);
 
 function button2() {    //stalk companies
     model.hoursLeft -= 3;
-    model.wit +=25;
+    model.connections +=25;
     model.energy -=50;
     model.happiness -=20;
     //Update game logic here
@@ -100,6 +100,7 @@ function button5() {    //friend
 }
 $("#button5").click(button5);
 
+$(".button").click(draw);
 
 function draw() {
     console.log("meme");
