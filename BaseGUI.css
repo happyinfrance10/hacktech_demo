@@ -1,7 +1,89 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:700");
 body {
-	background-color: black
+	margin: 0;
+	padding: 0;
+	background: url(1.jpeg);
+	-webkit-background-size:cover;
+	background-size:cover;
+	background-position: 50% 50%;
 }
+wrapper{
+width: 800 px;
+margin: 0 auto;
+}
+
+wrapper h1{
+text-align: center;
+text-transform: uppercase;
+margin-top: 40 px;
+}
+
+wrapper h2{
+	text-align: center;
+}
+
+.line {
+	height: 25px;
+	min-width: 800px;
+	margin: 0 auto 10 px;
+	line-height: 25px;
+	font-size: 14px;
+	color: #fff;
+	padding:0 0 0 10px;
+	position: relative;
+}
+
+.line:before{
+	content: '';
+	width: 100%;
+	position: absolute;
+	left: 0;
+	height: 25px;
+	top: 0;
+	z-index: -2;
+	background: #d2d6d7;
+}
+
+.line:after{
+	content: '';
+	background: #333;
+	height: 25px;
+	transition: 0.8s;
+	display: block;
+	width: 100%;
+	animation: animate 1 4s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.line1:after{
+	max-width: 90%;
+}
+
+.line2:after{
+	max-width: 90%;
+}
+
+.line3:after{
+	max-width: 90%;
+}
+
+.line4:after{
+	max-width: 70%;
+}
+
+@keyframes animate {
+	0% {
+		width:0;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
 #loadscreen {
 	margin: 0;
 	padding: 0;
@@ -30,81 +112,3 @@ button {
   border-radius: 10px;
 }
 
-dl {
-	display: flex;
-	background-color: white;
-	flex-direction: column;
-	width: 100%;
-	max-width: 700px;
-	position: relative;
-	padding: 20px;
-  }
-
-  dt {
-	align-self: flex-start;
-	width: 100%;
-	font-weight: 700;
-	display: block;
-	text-align: center;
-	font-size: 1.2em;
-	font-weight: 700;
-	margin-bottom: 20px;
-	margin-left: 130px;
-  }
-
-  .text {
-	font-weight: 600;
-	display: flex;
-	align-items: center;
-	height: 40px;
-	width: 130px;
-	background-color: white;
-	position: absolute;
-	left: 0;
-	justify-content: flex-end;
-  }
-
-  .value {
-	font-size: .8em;
-	line-height: 1;
-	text-transform: uppercase;
-	width: 100%;
-	height: 40px;
-	margin-left: 130px;
-	background: repeating-linear-gradient(
-	to right,
-	#ddd,
-	#ddd 1px,
-	#fff 1px,
-	#fff 5%
-  );
-
-	&:after {
-	  content: "";
-	  display: block;
-	  background-color: #3d9970;
-	  width: 50px;
-	  margin-bottom: 10px;
-	  height: 90%;
-	  position: relative;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  transition: background-color .3s ease;
-	  cursor: pointer;
-	}
-	&:hover,
-	&:focus {
-	  &:after {
-		 background-color: #aaa;
-	  }
-	}
-  }
-
-  @for $i from 1 through 1000 {
-	.value-#{$i} {
-	  &:after {
-		$value: ($i * 0.1%);
-		width: $value;
-	  }
-	}
-  }
