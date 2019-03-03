@@ -4,21 +4,24 @@ body {
 	padding: 0;
 	background: url(1.jpeg);
 	-webkit-background-size:cover;
+	background-color: black;
 	background-size:cover;
 	background-position: 50% 50%;
 }
-wrapper{
+.wrapper{
 width: 800 px;
 margin: 0 auto;
+padding: 20px;
+display: none;
 }
 
-wrapper h1{
+.wrapper h1{
 text-align: center;
 text-transform: uppercase;
 margin-top: 40 px;
 }
 
-wrapper h2{
+.wrapper h2{
 	text-align: center;
 }
 
@@ -99,9 +102,9 @@ wrapper h2{
 	display: none
 }
 
-#playerStats{
+/* #playerStats{
 	display: none;
-}
+} */
 p {
   font-size: 24px;
 }
@@ -111,4 +114,3 @@ button {
   font-family: "Poppins", sans-serif;
   border-radius: 10px;
 }
-
