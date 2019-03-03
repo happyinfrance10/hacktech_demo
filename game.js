@@ -50,6 +50,7 @@ function startGame() {
         $(".wrapper").css("display", "block");
         $("body").css("background-color", "white");
         model.gameState = 1;
+        draw();
     }
 }
 $(document).click(startGame);
@@ -99,18 +100,24 @@ function button5() {    //friend
 }
 $("#button5").click(button5);
 
-$(":button").click(draw);
 
 function draw() {
-    $("#coding").text(model.coding + "/1000 (" + (model.coding / 1000).toFixed(2) * 100 + "%)");
-    $("#resume").text(model.resume + "/1000 (" + (model.resume / 1000).toFixed(2) * 100 + "%)");
-    $("#personality").text(model.personality + "/1000 (" + (model.personality / 1000).toFixed(2) * 100 + "%)");
-    $("#connections").text(model.connections + "/1000 (" + (model.connections / 1000).toFixed(2) * 100 + "%)");
-    $("#happiness").text(model.happiness + "/1000 (" + (model.happiness / 1000).toFixed(2) * 100 + "%)");
-    $("#energy").text(model.energy + "/1000 (" + (model.energy / 1000).toFixed(2) * 100 + "%)");
+    console.log("meme");
+    $("#coding").text(formatScore(model.coding));
+    $("#resume").text(formatScore(model.resume));
+    $("#personality").text(formatScore(model.personality));
+    $("#connections").text(formatScore(model.connections));
+    $("#happiness").text(formatScore(model.happiness));
+    $("#energy").text(formatScore(model.energy));
     $("#time").text(model.hoursLeft + "/2160 hours remain.");
 }
 
-//Update game graphics every second?
-//TODO: Perhaps only update game graphics when necessary
-setInterval(draw, 1000);
+function formatScore(num) {
+    if (num > 1000) {
+        num = 1000;
+    }
+    return (num + "/1000 (" + (num / 1000).toFixed(2) * 100 + "%)");
+}
+
+$(".gui").click(draw);
+
