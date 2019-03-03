@@ -110,8 +110,8 @@ margin-top: 40 px;
 	align-items: center;
 	flex-direction: column;
 }
-#gui {
-	display: none;
+#gui, #playerStats {
+	display: none
 }
 
 /* #playerStats{
