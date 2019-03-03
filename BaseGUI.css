@@ -77,6 +77,18 @@ margin-top: 40 px;
 	max-width: 70%;
 }
 
+.line5:after{
+	max-width: 0%;
+}
+
+.line6:after{
+	max-width: 100%;
+}
+
+.line7:after{
+	max-width: 50%
+}
+
 @keyframes animate {
 	0% {
 		width:0;
