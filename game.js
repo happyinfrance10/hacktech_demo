@@ -9,7 +9,7 @@ var model = {
     coding: 0,
     resume: 0,
     personality: 0,
-    wit: 0
+    connections: 0
 }
 
 function normal_distribution(mean, sd, value){
