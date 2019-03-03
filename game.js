@@ -67,7 +67,7 @@ $("#button1").click(button1);
 
 function button2() {    //stalk companies
     model.hoursLeft -= 3;
-    model.wit +=25;
+    model.connections +=25;
     model.energy -=50;
     model.happiness -=20;
     //Update game logic here
@@ -99,7 +99,7 @@ function button5() {    //friend
 }
 $("#button5").click(button5);
 
-$(":button").click(draw);
+$(".button").click(draw);
 
 function draw() {
     $("#coding").text(model.coding + "/1000 (" + (model.coding / 1000).toFixed(2) * 100 + "%)");
