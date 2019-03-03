@@ -62,15 +62,18 @@ function button1() {    //leetcode
     model.coding +=10;
     model.energy -=125;
     model.happiness -=25;
+    checkVariables();
     //Update game logic here
 }
 $("#button1").click(button1);
 
-function button2() {    //stalk companies
+function button2() {
     model.hoursLeft -= 3;
-    model.connections +=25;
+    model.connections +=20;
+    model.personality +=10;
     model.energy -=50;
     model.happiness -=20;
+    checkVariables();
     //Update game logic here
 }
 $("#button2").click(button2);
@@ -78,6 +81,7 @@ $("#button2").click(button2);
 function button3() {  //nap
     model.hoursLeft -= 3;
     model.energy +=500;
+    checkVariables();
     //Update game logic here
 }
 $("#button3").click(button3);
@@ -88,6 +92,7 @@ function button4() {    //project
     model.resume +=15;
     model.happiness -=50;
     model.energy -=200;
+    checkVariables();
     //Update game logic here
 }
 $("#button4").click(button4);
@@ -95,7 +100,9 @@ $("#button4").click(button4);
 function button5() {    //friend
     model.hoursLeft -= 3;
     model.happiness +=500;
+    model.personality +=5;
     model.energy +=75;
+    checkVariables();
     //Update game logic here
 }
 $("#button5").click(button5);
@@ -120,5 +127,33 @@ function formatScore(num) {
     return (num + "/1000 (" + (num / 1000).toFixed(2) * 100 + "%)");
 }
 
-$(".gui").click(draw);
+function checkVariables(){
+  if (model.coding > 1000) {
+      model.coding = 1000;
+  }
+  if (model.resume > 1000) {
+      model.resume = 1000;
+  }
+  if (model.personality > 1000) {
+      model.personality = 1000;
+  }
+  if (model.connections > 1000) {
+      model.connections = 1000;
+  }
+  if (model.happiness > 1000) {
+      model.happiness = 1000;
+  }
+  if (model.energy > 1000) {
+      model.energy = 1000;
+  }
+  if (model.energy <= 0) {
+    //burnt out --> cannot do anything but rest
+    model.energy = 0;
+  }
+  if (model.hoursLeft === 0) {
+    //game over stuff: if past a certain level, say congrats.
+    //
+  }
+}
 
+$(document).click(draw);
