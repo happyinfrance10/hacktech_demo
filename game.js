@@ -32,10 +32,10 @@ $(document).click(startGame);
 //Example code - define function to update model, then bind model to button
 //click event
 function button1() {    //leetcode
-  if(model.energy-125>=0 && model.happiness-25>=0){
+  if(model.energy-150>=0 && model.happiness-25>=0){
     model.hoursLeft -= 3;
-    model.coding +=10;
-    model.energy -=125;
+    model.coding +=(Math.floor(Math.random() * 5)+2);
+    model.energy -=150;
     model.happiness -=25;
     checkVariables();
     //Update game logic here
@@ -50,8 +50,8 @@ $("#button1").click(button1);
 function button2() {
   if(model.energy-50>=0 && model.happiness-20>=0){
     model.hoursLeft -= 3;
-    model.connections +=20;
-    model.personality +=10;
+    model.connections +=(Math.floor(Math.random() * 5)+4);
+    model.personality +=(Math.floor(Math.random() * 5));
     model.energy -=50;
     model.happiness -=20;
     checkVariables();
@@ -74,9 +74,9 @@ $("#button3").click(button3);
 
 function button4() {    //project
   if(model.energy-200>=0 && model.happiness-50>=0){
-    model.hoursLeft -= 6;
-    model.coding +=5;
-    model.resume +=15;
+    model.hoursLeft -= 12;
+    model.coding +=(Math.floor(Math.random() * 3)+1);
+    model.resume +=(Math.floor(Math.random() * 7)+3);
     model.happiness -=50;
     model.energy -=200;
     checkVariables();
@@ -90,12 +90,16 @@ function button4() {    //project
 $("#button4").click(button4);
 
 function button5() {    //friend
+  if(model.energy-25>=0){
     model.hoursLeft -= 3;
     model.happiness +=500;
-    model.personality +=5;
-    model.energy +=75;
+    model.personality +=(Math.floor(Math.random() * 6)+3);
+    model.energy -=25;
     checkVariables();
     //Update game logic here
+  } else {
+    document.getElementById("status").innerHTML = "Do you really want to end up too exhausted to be productive soon?";
+  }
 }
 $("#button5").click(button5);
 
